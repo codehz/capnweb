@@ -10,14 +10,14 @@
 // 3. The Unstubify<T> type correctly handles tuple types (tested through RpcStub method signatures)
 //
 // To run these tests:
-//   npm run test -- --project=type-tests
+//   npm run test:types
 //
 // These tests use Vitest's type testing functionality (https://vitest.dev/guide/testing-types)
 // and validate that the type transformations work correctly at compile time.
 
 import { expectTypeOf } from "vitest"
 import type { RpcCompatible, RpcStub } from "../src/index.js"
-import type { Stub, Stubify } from "../src/types.js"
+import type { Stub, Stubify } from "../src/types.d.ts"
 import { RpcTarget } from "../src/index.js"
 
 // Test class for Stubable types
