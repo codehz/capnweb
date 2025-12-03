@@ -31,6 +31,7 @@
     "build:watch": "tsup --watch --format esm,cjs",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:types": "vitest run --project=type-tests",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

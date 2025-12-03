@@ -2,6 +2,19 @@
 // Licensed under the MIT license found in the LICENSE.txt file or at:
 //     https://opensource.org/license/mit
 
+// Type tests for Cap'n Web
+// 
+// This file tests the TypeScript type definitions for Cap'n Web, specifically:
+// 1. The RpcCompatible<T> type is exported and works correctly
+// 2. The Stubify<T> type correctly handles tuple types (empty, regular, readonly, nested)
+// 3. The Unstubify<T> type correctly handles tuple types (tested through RpcStub method signatures)
+//
+// To run these tests:
+//   npm run test -- --project=type-tests
+//
+// These tests use Vitest's type testing functionality (https://vitest.dev/guide/testing-types)
+// and validate that the type transformations work correctly at compile time.
+
 import { expectTypeOf } from "vitest"
 import type { RpcCompatible, RpcStub } from "../src/index.js"
 import type { Stub, Stubify } from "../src/types.js"
