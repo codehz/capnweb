@@ -92,6 +92,7 @@ export type Stubify<T> =
   : T extends StubBase<any> ? T
   : T extends Map<infer K, infer V> ? Map<Stubify<K>, Stubify<V>>
   : T extends Set<infer V> ? Set<Stubify<V>>
+  : T extends readonly [infer First, ...infer Rest] ? readonly [Stubify<First>, ...{ [K in keyof Rest]: Stubify<Rest[K]> }]
   : T extends Array<infer V> ? Array<Stubify<V>>
   : T extends ReadonlyArray<infer V> ? ReadonlyArray<Stubify<V>>
   : T extends BaseType ? T
@@ -107,6 +108,7 @@ type UnstubifyInner<T> =
   T extends StubBase<infer V> ? (T | V)  // can provide either stub or local RpcTarget
   : T extends Map<infer K, infer V> ? Map<Unstubify<K>, Unstubify<V>>
   : T extends Set<infer V> ? Set<Unstubify<V>>
+  : T extends readonly [infer First, ...infer Rest] ? readonly [Unstubify<First>, ...{ [K in keyof Rest]: Unstubify<Rest[K]> }]
   : T extends Array<infer V> ? Array<Unstubify<V>>
   : T extends ReadonlyArray<infer V> ? ReadonlyArray<Unstubify<V>>
   : T extends BaseType ? T
