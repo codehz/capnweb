@@ -3,7 +3,7 @@
 //     https://opensource.org/license/mit
 
 // Type tests for Cap'n Web
-// 
+//
 // This file tests the TypeScript type definitions for Cap'n Web, specifically:
 // 1. The RpcCompatible<T> type is exported and works correctly
 // 2. The Stubify<T> type correctly handles tuple types (empty, regular, readonly, nested)
@@ -17,7 +17,7 @@
 
 import { expectTypeOf } from "vitest"
 import type { RpcCompatible, RpcStub } from "../src/index.js"
-import type { Stub, Stubify } from "../src/types.d.ts"
+import type { Stub, Stubify } from "../src/types.js"
 import { RpcTarget } from "../src/index.js"
 
 // Test class for Stubable types
@@ -268,4 +268,3 @@ expectTypeOf<[number, number]>().toMatchTypeOf<Awaited<TakeTupleParam>>()
 
 // Arrays and tuples should not be interchangeable
 expectTypeOf<number[]>().not.toEqualTypeOf<[number, number]>()
-
