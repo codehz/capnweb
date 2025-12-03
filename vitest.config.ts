@@ -11,6 +11,20 @@ export default defineConfig({
   test: {
     globalSetup: ['__tests__/test-server.ts'],
     projects: [
+      // Type tests
+      {
+        test: {
+          name: 'type-tests',
+          include: ['__tests__/*.test-d.ts'],
+          typecheck: {
+            enabled: true,
+            only: true,
+            include: ['__tests__/*.test-d.ts'],
+            tsconfig: '__tests__/tsconfig.typetest.json',
+          },
+        },
+      },
+
       // Node.js
       {
         test: {
